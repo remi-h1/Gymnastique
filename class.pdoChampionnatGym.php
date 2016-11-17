@@ -14,7 +14,7 @@
 class PdoChampionnatGym
 {   		
       	private static $serveur='mysql:host=localhost';
-      	private static $bdd='dbname=championnat_gym';   		
+      	private static $bdd='dbname=fscfrmbdym2017';   		
       	private static $user='root' ;    		
       	private static $mdp='' ;	
 		private static $monPdo;
