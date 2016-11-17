@@ -10,4 +10,4 @@
     <body >
 
     <div class="header">
-        <h1><?php echo $$titre; ?></h1>
+        <h1><?php echo $titre; ?></h1>
