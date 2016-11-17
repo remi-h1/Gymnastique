@@ -2,7 +2,7 @@
 session_start();
 require_once("util/fonctions_PHP.php");
 require_once("util/class.pdoChampionnatGym.php");
-include("vues/v_entete.php") ;
+include("vues/c_entete.php") ;
 include("vues/v_bandeau.php") ;
 
 if(!isset($_REQUEST['uc']))
