@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS gym;
+DROP DATABASE IF EXISTS championnat_Gym;
 
-CREATE DATABASE IF NOT EXISTS gym;
-USE gym;
+CREATE DATABASE IF NOT EXISTS championnat_Gym;
+USE championnat_Gym;
 # -----------------------------------------------------------------------------
 #       TABLE : ASSOCIATION
 # -----------------------------------------------------------------------------
