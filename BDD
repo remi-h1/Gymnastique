@@ -1,40 +1,40 @@
-DROP DATABASE IF EXISTS championnat_Gym;
+DROP DATABASE IF EXISTS fscfrmbdym2017;
 
-CREATE DATABASE IF NOT EXISTS championnat_Gym;
-USE championnat_Gym;
+CREATE DATABASE IF NOT EXISTS fscfrmbdym2017;
+USE fscfrmbdym2017;
 # -----------------------------------------------------------------------------
 #       TABLE : ASSOCIATION
 # -----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS ASSOCIATION
  (
-   NUMEROASSO BIGINT(5) NOT NULL  ,
-   NOM VARCHAR(60) NULL  ,
-   ADRESSE VARCHAR(128) NULL  ,
-   CP CHAR(5) NULL  ,
-   VILLE VARCHAR(60) NULL  ,
-   REGION CHAR(2) NULL  ,
-   MAIL VARCHAR(128) NULL  ,
-   TELASSO CHAR(10) NULL  ,
+   NUMEROASSO BIGINT(5) NOT NULL AUTO_INCREMENT ,
+   NOMA VARCHAR(60) NULL  ,
+   ADRESSEA VARCHAR(128) NULL  ,
+   CPA CHAR(5) NULL  ,
+   VILLEA VARCHAR(60) NULL  ,
+   REGIONA CHAR(2) NULL  ,
+   MAILA VARCHAR(128) NULL  ,
+   TELA CHAR(10) NULL  ,
    NOMCORRESPONDANT VARCHAR(50) NULL  ,
    PRENOMCORRESPONDANT VARCHAR(50) NULL  ,
    TELCORRESPONDANT CHAR(10) NULL  ,
    MAILCORRESPONDANT VARCHAR(128) NULL  ,
-   NBEQUIPEFA INTEGER(2) NULL  ,
-   NBGYMFA INTEGER(2) NULL  ,
-   NBEQUIPEFJ INTEGER(2) NULL  ,
-   NBGYMFJ INTEGER(2) NULL  ,
-   NBEQUIPEF1A INTEGER(2) NULL  ,
-   NBGYMF1A INTEGER(2) NULL  ,
-   NBEQUIPEF1J INTEGER(2) NULL  ,
-   NBGYMF1J INTEGER(2) NULL  ,
+   NBEQUIPEFA INTEGER NULL  ,
+   NBGYMFA INTEGER NULL  ,
+   NBEQUIPEFJ INTEGER NULL  ,
+   NBGYMFJ INTEGER NULL  ,
+   NBEQUIPEF1A INTEGER NULL  ,
+   NBGYMF1A INTEGER NULL  ,
+   NBEQUIPEF1J INTEGER NULL  ,
+   NBGYMF1J INTEGER NULL  ,
    MONTANTINSCRIPTIONEQUIPE BIGINT(4) NULL  ,
-   ACOMPTE SMALLINT(1) NULL  ,
-   ACOMPTERECU SMALLINT(1) NULL  ,
-   FACTUREACOMPTE SMALLINT(1) NULL  ,
+   ACOMPTE SMALLINT NULL  ,
+   ACOMPTERECU SMALLINT NULL  ,
+   FACTUREACOMPTE SMALLINT NULL  ,
    MODEREGLEMENT CHAR(10) NULL  ,
-   REGLEMENTSOLDE SMALLINT(1) NULL  ,
-   OUVERTURECOMPTE SMALLINT(1) NULL  
+   REGLEMENTSOLDE SMALLINT NULL  ,
+   OUVERTURECOMPTE SMALLINT NULL  
    , PRIMARY KEY (NUMEROASSO) 
  ) 
  comment = "";
@@ -45,13 +45,66 @@ CREATE TABLE IF NOT EXISTS ASSOCIATION
 
 CREATE TABLE IF NOT EXISTS HEBERGEMENT
  (
-   IDHEB BIGINT(4) NOT NULL  ,
+   IDHEB BIGINT(4) NOT NULL AUTO_INCREMENT ,
    TELHEB VARCHAR(10) NULL  ,
    NOMHEB VARCHAR(60) NULL  ,
-   NBCHAMBRE1PLACE SMALLINT(1) NULL  ,
-   NBCHAMBRE2PLACES SMALLINT(1) NULL  ,
-   TYPE CHAR(32) NULL  
+   NBCHAMBRE1PLACE SMALLINT NULL  ,
+   NBCHAMBRE2PLACES SMALLINT NULL  ,
+   TYPE CHAR(32) NULL  ,
+   ADRESSE VARCHAR(128) NULL  ,
+   VILLE VARCHAR(40) NULL  ,
+   CP CHAR(5) NULL  
    , PRIMARY KEY (IDHEB) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : MONTANT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS MONTANT
+ (
+   DONNEE CHAR(32) NOT NULL  ,
+   VALEUR BIGINT(6) NULL  
+   , PRIMARY KEY (DONNEE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : NUIT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS NUIT
+ (
+   IDN CHAR(32) NOT NULL AUTO_INCREMENT ,
+   LIBELLEN CHAR(32) NULL  
+   , PRIMARY KEY (IDN) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : PERSONNEL_TECHNIQUE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS PERSONNEL_TECHNIQUE
+ (
+   NUMEROJUGE BIGINT(4) NOT NULL AUTO_INCREMENT ,
+   FONCTION VARCHAR(128) NULL  
+   , PRIMARY KEY (NUMEROJUGE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : JOUR_REPAS
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS JOUR_REPAS
+ (
+   IDJR BIGINT(4) NOT NULL AUTO_INCREMENT ,
+   LIBELLEJR CHAR(32) NULL  ,
+   JUGE BOOL NULL  ,
+   GIM BOOL NULL  
+   , PRIMARY KEY (IDJR) 
  ) 
  comment = "";
 
@@ -61,25 +114,21 @@ CREATE TABLE IF NOT EXISTS HEBERGEMENT
 
 CREATE TABLE IF NOT EXISTS JUGE
  (
-   NUMEROJUGE BIGINT(4) NOT NULL  ,
-   NUMEROASSO BIGINT(5) NOT NULL  ,
+   NUMEROJUGE BIGINT(4) NOT NULL AUTO_INCREMENT ,
    IDHEB BIGINT(4) NULL  ,
-   NOM VARCHAR(50) NULL  ,
-   PRENOM VARCHAR(50) NULL  ,
-   TELJUGE1 CHAR(10) NULL  ,
-   TELJUGE2 CHAR(10) NULL  ,
-   ADRESSE VARCHAR(100) NULL  ,
-   CP CHAR(5) NULL  ,
-   VILLE VARCHAR(60) NULL  ,
-   MAIL VARCHAR(60) NULL  ,
-   REGION CHAR(2) NULL  ,
-   CONJOINT SMALLINT(1) NULL  ,
-   PETITDEJSAMEDIMATIN SMALLINT(1) NULL  ,
-   SAMEDIMIDI SMALLINT(1) NULL  ,
-   SAMEDISOIR SMALLINT(1) NULL  ,
-   DIMANCHEMIDI SMALLINT(1) NULL  ,
-   PETITDEJDIMANCHEMATIN SMALLINT(1) NULL  ,
-   REPAS_OFFICIEL SMALLINT(1) NULL  
+   NUMEROASSO BIGINT(5) NOT NULL  ,
+   NOMJ VARCHAR(50) NULL  ,
+   PRENOMJ VARCHAR(50) NULL  ,
+   TELJ1 CHAR(10) NULL  ,
+   TELJ2 CHAR(10) NULL  ,
+   ADRESSEJ VARCHAR(100) NULL  ,
+   CPJ CHAR(5) NULL  ,
+   VILLEJ VARCHAR(60) NULL  ,
+   MAILJ VARCHAR(60) NULL  ,
+   REGIONJ CHAR(2) NULL  ,
+   CONJOINT SMALLINT NULL  ,
+   SEXE BOOL NULL  ,
+   AGE INTEGER NULL  
    , PRIMARY KEY (NUMEROJUGE) 
  ) 
  comment = "";
@@ -89,11 +138,82 @@ CREATE TABLE IF NOT EXISTS JUGE
 # -----------------------------------------------------------------------------
 
 
+CREATE  INDEX I_FK_JUGE_HEBERGEMENT
+     ON JUGE (IDHEB ASC);
+
 CREATE  INDEX I_FK_JUGE_ASSOCIATION
      ON JUGE (NUMEROASSO ASC);
 
-CREATE  INDEX I_FK_JUGE_HEBERGEMENT
-     ON JUGE (IDHEB ASC);
+# -----------------------------------------------------------------------------
+#       TABLE : DORT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS DORT
+ (
+   NUMEROJUGE BIGINT(4) NOT NULL  ,
+   IDN CHAR(32) NOT NULL  
+   , PRIMARY KEY (NUMEROJUGE,IDN) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE DORT
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_DORT_JUGE
+     ON DORT (NUMEROJUGE ASC);
+
+CREATE  INDEX I_FK_DORT_NUIT
+     ON DORT (IDN ASC);
+
+# -----------------------------------------------------------------------------
+#       TABLE : GIM_MANGER
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS GIM_MANGER
+ (
+   NUMEROASSO BIGINT(5) NOT NULL  ,
+   IDJR BIGINT(4) NOT NULL  ,
+   NOMBRE INTEGER NULL  
+   , PRIMARY KEY (NUMEROASSO,IDJR) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE GIM_MANGER
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_GIM_MANGER_ASSOCIATION
+     ON GIM_MANGER (NUMEROASSO ASC);
+
+CREATE  INDEX I_FK_GIM_MANGER_JOUR_REPAS
+     ON GIM_MANGER (IDJR ASC);
+
+# -----------------------------------------------------------------------------
+#       TABLE : JUGE_MANGER
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS JUGE_MANGER
+ (
+   NUMEROJUGE BIGINT(4) NOT NULL  ,
+   IDJR BIGINT(4) NOT NULL  ,
+   NOMBRE BIGINT(4) NULL  
+   , PRIMARY KEY (NUMEROJUGE,IDJR) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE JUGE_MANGER
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_JUGE_MANGER_JUGE
+     ON JUGE_MANGER (NUMEROJUGE ASC);
+
+CREATE  INDEX I_FK_JUGE_MANGER_JOUR_REPAS
+     ON JUGE_MANGER (IDJR ASC);
 
 
 # -----------------------------------------------------------------------------
@@ -101,12 +221,47 @@ CREATE  INDEX I_FK_JUGE_HEBERGEMENT
 # -----------------------------------------------------------------------------
 
 
-ALTER TABLE JUGE 
-  ADD FOREIGN KEY FK_JUGE_ASSOCIATION (NUMEROASSO)
-      REFERENCES ASSOCIATION (NUMEROASSO) ;
+ALTER TABLE PERSONNEL_TECHNIQUE 
+  ADD FOREIGN KEY FK_PERSONNEL_TECHNIQUE_JUGE (NUMEROJUGE)
+      REFERENCES JUGE (NUMEROJUGE) ;
 
 
 ALTER TABLE JUGE 
   ADD FOREIGN KEY FK_JUGE_HEBERGEMENT (IDHEB)
       REFERENCES HEBERGEMENT (IDHEB) ;
+
+
+ALTER TABLE JUGE 
+  ADD FOREIGN KEY FK_JUGE_ASSOCIATION (NUMEROASSO)
+      REFERENCES ASSOCIATION (NUMEROASSO) ;
+
+
+ALTER TABLE DORT 
+  ADD FOREIGN KEY FK_DORT_JUGE (NUMEROJUGE)
+      REFERENCES JUGE (NUMEROJUGE) ;
+
+
+ALTER TABLE DORT 
+  ADD FOREIGN KEY FK_DORT_NUIT (IDN)
+      REFERENCES NUIT (IDN) ;
+
+
+ALTER TABLE GIM_MANGER 
+  ADD FOREIGN KEY FK_GIM_MANGER_ASSOCIATION (NUMEROASSO)
+      REFERENCES ASSOCIATION (NUMEROASSO) ;
+
+
+ALTER TABLE GIM_MANGER 
+  ADD FOREIGN KEY FK_GIM_MANGER_JOUR_REPAS (IDJR)
+      REFERENCES JOUR_REPAS (IDJR) ;
+
+
+ALTER TABLE JUGE_MANGER 
+  ADD FOREIGN KEY FK_JUGE_MANGER_JUGE (NUMEROJUGE)
+      REFERENCES JUGE (NUMEROJUGE) ;
+
+
+ALTER TABLE JUGE_MANGER 
+  ADD FOREIGN KEY FK_JUGE_MANGER_JOUR_REPAS (IDJR)
+      REFERENCES JOUR_REPAS (IDJR) ;
 
