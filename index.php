@@ -8,7 +8,7 @@ if(!isset($_REQUEST['uc']))
 else
 	$uc = $_REQUEST['uc'];
 
-include("vues/c_entete.php") ;
+include("controleurs/c_entete.php") ;
 include("vues/v_bandeau.php") ;
 
 $pdo = PdoChampionnatGym::getPdoChampionnatGym();
