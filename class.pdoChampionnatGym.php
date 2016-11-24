@@ -18,7 +18,7 @@ class PdoChampionnatGym
       	private static $user='root' ;    		
       	private static $mdp='' ;	
 		private static $monPdo;
-		private static $monChampionnatGym = null;
+		private static $monPdoChampionnatGym = null;
 /**
  * Constructeur privé, crée l'instance de PDO qui sera sollicitée
  * pour toutes les méthodes de la classe
