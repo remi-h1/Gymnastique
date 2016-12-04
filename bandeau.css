@@ -1,0 +1,58 @@
+#menu{
+	height: 40px;
+	background: silver;
+}
+
+dl{
+/*	height: 40px;*/
+	margin: 0;
+	padding: 0;
+	display: block;
+	float: left;
+}
+dt{
+	width: 160px;
+	display: :block;
+	height: 40px;
+	line-height: 40px;
+	cursor:pointer;
+	text-align: center;
+
+}
+dd{
+	width: 160px;
+	display: :block;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+dd ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+dd ul li a {
+	text-decoration: none;
+	height: 40px;
+	display: :block;
+}
+dl dd{
+	display: none;
+}
+
+dl:hover dd{
+	display: block;
+}
+#menu ul
+{
+	background: rgba(200,200,200,0.92);
+	z-index: 3;
+	 position: absolute;
+}
+
+#menu a
+{
+	padding: 10px;
+	text-decoration: none;
+	color: rgba(0,0,200,10)!important;
+}
