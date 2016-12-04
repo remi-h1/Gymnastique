@@ -1,4 +1,7 @@
 <?php
+
+// auteur : Rémi Hillériteau
+
 if(isset($_REQUEST['uc']) AND !empty($_REQUEST['uc']))
     $titre=$_REQUEST['uc'];
 else
@@ -8,7 +11,7 @@ switch($uc)
     case 'accueil' : $titre='Accueil';
     break;
 
-    case 'gestionHebergementJuges' : $titre='Gestion des hébergements des juges';
+    case 'gererHebergementJuges' : $titre='Gestion des hébergements pour les juges';
     break;
 
     case 'gererJuge' : $titre='Gestion des juges';
