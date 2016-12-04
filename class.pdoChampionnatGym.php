@@ -10,7 +10,6 @@
  * $monPdoGsb qui contiendra l'unique instance de la classe
  *
 */
-
 class PdoChampionnatGym
 {   		
       	private static $serveur='mysql:host=localhost';
@@ -46,5 +45,33 @@ class PdoChampionnatGym
 		return PdoChampionnatGym::$monPdoChampionnatGym;  
 	}
 
+
+	// récupérer tous les hébergements
+	// auteur : Rémi Hillériteau
+	public function getLesHebergements()
+	{
+		$req = "select * from hebergement";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	// enregistrer un hébergement
+	// auteur : Rémi Hillériteau
+	public function setHebergement($nom, $type, $nbChambre1, $nbChambre2, $tel, $adresse, $cp, $ville, $mail)
+	{
+
+		$req = "insert into hebergement(NOMHEB, NBCHAMBRE1PLACE, NBCHAMBRE2PLACES, TYPE, TELHEB, ADRESSE, VILLE, CP, MAIL) values ('$nom','$nbChambre1','$nbChambre2','$type','$tel','$adresse','$ville','$cp', '$mail')";
+		echo $req."<br>";
+		$res = PdoChampionnatGym::$monPdo->exec($req);
+	}
+
+	public function getUnHebergement($id)
+	{
+		$req = "select * from hebergement WHERE IDHEB='$id'";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$uneLigne = $res->fetch();
+		return $uneLigne;
+	}
 }
 ?>
