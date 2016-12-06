@@ -1,5 +1,5 @@
 <?php
-// entête
+// en tête
 // auteur : Rémi Hillériteau
 
 if(isset($_REQUEST['uc']) AND !empty($_REQUEST['uc']))
