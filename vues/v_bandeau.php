@@ -13,9 +13,9 @@
 		<dt>Juges</dt>
 			<dd>
 				<ul>
-					<a href="index.php?uc=gererJuge&action=voirJuges"><li> Voir les Juges</li></a>
-					<a href="index.php?uc=gererJuge&action=ajouterUnJuge"><li> Ajouter un Juge</li></a>				
-					<a href="index.php?uc=gererJuge"><li>Affecter un Juge à un hébergement</li></a>			
+					<a href="index.php?uc=gererJuges&action=voirJuges"><li> Voir les Juges</li></a>
+					<a href="index.php?uc=gererJuges&action=ajouterUnJuge"><li> Ajouter un Juge</li></a>				
+					<a href="index.php?uc=gererJuges"><li>Affecter un Juge à un hébergement</li></a>			
 				</ul>	
 			</dd>
 	</dl>
