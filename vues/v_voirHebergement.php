@@ -18,7 +18,7 @@ else
 {
 	?>
 	<table class='tableau'>
-		<tr>
+ 		<tr>
 			<th <?php echo trieListeHebergement('NOMHEB'); ?> >Nom hebergement</th>
 			<th <?php echo trieListeHebergement('TYPE'); ?> >Type</th>
 			<th <?php echo trieListeHebergement('ADRESSE'); ?> >adresse</th>
@@ -57,8 +57,8 @@ else
 					<td><?php echo $unHebergement['TYPE']; ?></td>
 					<td><?php echo $adresse . " " . $cp . " " . $ville; ?></td>
 
-					<td><?php echo $nbChambre1P; ?><span class='detailReservation'>(<?php echo $nombreDisponible1 . " diponible"; if($nombreDisponible1>1) { echo "s"; } echo ")"; ?></span></td>
-					<td><?php echo $nbChambre2P; ?><span class='detailReservation'>(<?php echo $nombreDisponible2 . " disponible"; if($nombreDisponible2>1) { echo "s"; } echo ")"; ?></td>
+					<td><?php echo $nbChambre1P; ?><span class='detailReservation'> (<?php echo $nombreDisponible1 . " diponible"; if($nombreDisponible1>1) { echo "s"; } echo ")"; ?></span></td>
+					<td><?php echo $nbChambre2P; ?><span class='detailReservation'> (<?php echo $nombreDisponible2 . " disponible"; if($nombreDisponible2>1) { echo "s"; } echo ")"; ?></td>
 					<td><?php echo $mail; ?></td>
 					<td><?php echo tel($tel); ?></td>
 					
