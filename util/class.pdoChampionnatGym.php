@@ -48,9 +48,9 @@ class PdoChampionnatGym
 
 	// récupérer tous les hébergements
 	// auteur : Rémi Hillériteau
-	public function getLesHebergements()
+	public function getLesHebergements($r, $o, $t)
 	{
-		$req = "select * from hebergement";
+		$req = "select * from hebergement WHERE NOMHEB LIKE '%".$r."%' ORDER BY $t $o";
 		$res = PdoChampionnatGym::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
@@ -62,7 +62,6 @@ class PdoChampionnatGym
 	{
 
 		$req = "insert into hebergement(NOMHEB, NBCHAMBRE1PLACE, NBCHAMBRE2PLACES, TYPE, TELHEB, ADRESSE, VILLE, CP, MAIL) values ('$nom','$nbChambre1','$nbChambre2','$type','$tel','$adresse','$ville','$cp', '$mail')";
-		echo $req."<br>";
 		$res = PdoChampionnatGym::$monPdo->exec($req);
 	}
 
@@ -72,6 +71,49 @@ class PdoChampionnatGym
 		$res = PdoChampionnatGym::$monPdo->query($req);
 		$uneLigne = $res->fetch();
 		return $uneLigne;
+	}
+	
+	// compte le nombre de réservation pour un hébergement et pour une chambre de 1 ou 2 places
+	// auteur : Rémi Hillériteau
+	public function getReservation($idHeb, $place)
+	{
+		if($place==1)
+			$conjoint=0;
+		else
+			$conjoint=1;
+
+		$req = "select COUNT(*) as 'nb' from juge WHERE IDHEB='$idHeb' AND CONJOINT='$conjoint'";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$uneLigne = $res->fetch();
+		$valeur=$uneLigne['nb'];
+		return $valeur;
+	}
+
+	// modifier un hébergement
+	// auteur : Rémi Hillériteau
+	public function modifHebergement($id, $nom, $type, $nbChambre1, $nbChambre2, $tel, $adresse, $cp, $ville, $mail)
+	{
+		$req = "UPDATE hebergement
+				SET NOMHEB='$nom',
+					NBCHAMBRE1PLACE='$nbChambre1',
+				 	NBCHAMBRE2PLACES='$nbChambre2',
+				   	TYPE='$type',
+				    TELHEB='$tel',
+				    ADRESSE='$adresse',
+				    VILLE='$ville', 
+				    CP='$cp',
+				    MAIL='$mail'
+				WHERE IDHEB='$id' ";
+		$res = PdoChampionnatGym::$monPdo->exec($req);
+	}
+
+	// supprimer un hébergement
+	// auteur : Rémi Hillériteau
+	public function supHebergement($id)
+	{
+		$req = "DELETE FROM hebergement
+				WHERE IDHEB='$id' ";
+		$res = PdoChampionnatGym::$monPdo->exec($req);
 	}
 }
 ?>
