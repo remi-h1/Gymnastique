@@ -34,6 +34,7 @@ body
 		margin: auto;
 		width: 100%;
 		text-align: left;
+		margin-top: 10px;
 		margin-bottom: 20px;
 	}
 
@@ -61,12 +62,18 @@ body
 		width: 18px;
 	}
 
+	.detailReservation
+	{
+		font-size: 13px;
+	}
+
 /* formulaire */
 	.formulaire input, select
 	{
 		margin-top: 5px;
 		margin-left: 5px;
 	}
+
 	#alert
 	{
 		color: red;
