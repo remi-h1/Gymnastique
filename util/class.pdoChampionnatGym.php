@@ -115,5 +115,63 @@ class PdoChampionnatGym
 				WHERE IDHEB='$id' ";
 		$res = PdoChampionnatGym::$monPdo->exec($req);
 	}
+
+	// récupérer LES associations
+	// auteur : Rémi Hillériteau
+	public function getAssociations()
+	{
+		$req = "select * from association";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$desLignes = $res->fetchAll();
+		return $desLignes;
+	}
+
+	// récupérer UNE association
+	// auteur : Rémi Hillériteau
+	public function getUneAssociation($id)
+	{
+		$req = "select * from association WHERE NUMEROASSO='$id'";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$desLignes = $res->fetch();
+		return $desLignes;
+	}
+
+	// récupérer le nom et l'id des associations
+	// auteur : Rémi Hillériteau
+	public function getNomsAssociations()
+	{
+		$req = "select NUMEROASSO, NOMA, VILLEA, CPA from association";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$desLignes = $res->fetchAll();
+		return $desLignes;
+	}
+
+	// récupérer les associations
+	// auteur : Rémi Hillériteau
+	public function getPremierAssociation()
+	{
+		$req = "select * from association LIMIT 1";
+		$res = PdoChampionnatGym::$monPdo->query($req);
+		$desLignes = $res->fetch();
+		return $desLignes;
+	}
+
+
+	// modifier la partie compta dans association
+	// auteur : Rémi Hillériteau
+	public function modifierAssociationCompta($idAsso, $acompte, $acompteRecu, $factureAcompte, $modeReglement, $reglementSolde, $ouvertureCompte)
+	{
+		$req = "UPDATE association
+				SET ACOMPTE='$acompte',
+					ACOMPTERECU='$acompteRecu',
+				 	FACTUREACOMPTE='$factureAcompte',
+				   	MODEREGLEMENT='$modeReglement',
+				    REGLEMENTSOLDE='$reglementSolde',
+				    OUVERTURECOMPTE='$ouvertureCompte'
+				WHERE NUMEROASSO='$idAsso' ";
+		$res = PdoChampionnatGym::$monPdo->exec($req);
+	}
+
+	
 }
 ?>
