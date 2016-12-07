@@ -5,7 +5,7 @@ auteur : Rémi Hillériteau
 <h2>Les hébergements</h2>
 
 <form method="post" action="?uc=gererHebergementJuges&action=afficherListeHebergement" name="formulaire" class='formulaire'>
-	<label for='r'>Recherche par nom : </label><input name='r' maxlength="20" type="texte" />
+	<label for='r'>Recherche par nom : </label><input name='r' maxlength="20" type="text" />
 	<input type="submit" value="ok">
 </form>
 
@@ -18,7 +18,7 @@ else
 {
 	?>
 	<table class='tableau'>
- 		<tr>
+		<tr>
 			<th <?php echo trieListeHebergement('NOMHEB'); ?> >Nom hebergement</th>
 			<th <?php echo trieListeHebergement('TYPE'); ?> >Type</th>
 			<th <?php echo trieListeHebergement('ADRESSE'); ?> >adresse</th>
