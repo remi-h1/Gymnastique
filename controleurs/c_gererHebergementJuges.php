@@ -7,7 +7,6 @@ switch($action)
 {
 	case 'afficherListeHebergement':
 	{
-		// $lesHebergements = $pdo->getLesHebergements();
 		$lesHebergements=lesHebergemntsTrie($pdo);
 		include("vues/v_voirHebergement.php");
 		break;
