@@ -47,18 +47,21 @@ function verifFormulaireGererHeb()
 		if(nom.value.length>30  || nom.value.length==0 || !(isNaN(nom.value)))
 			{
 				creerUneAlerte('Le nom est incorrect', nom);
+				envoyer=false;
 			}
 
 		// chambre 1 place
 		if(chambre1.value>1000  || chambre1.value<0 || isNaN(chambre1.value))
 			{
 				creerUneAlerte('Le nombre est incorrecte, il ne peut pas dépasser 3 chiffres', chambre1);
+				envoyer=false;
 			}
 
 		// chambre 2 places
 		if(chambre2.value>1000  || chambre2.value<0 || isNaN(chambre2.value))
 			{
 				creerUneAlerte('Le nombre est incorrecte, il ne peut pas dépasser 3 chiffres', chambre2);
+				envoyer=false;
 			}
 
 		// tel
@@ -67,12 +70,14 @@ function verifFormulaireGererHeb()
 		if(telNumber.length!=10 || isNaN(telNumber))
 			{
 				creerUneAlerte('Le numéro de téléphone est incorrect', tel);
+				envoyer=false;
 			}
 
 		// adresse
 		if(adresse.value.length==0)
 			{
 				creerUneAlerte('Vous devez remplir ce champ', adresse);
+				envoyer=false;
 			}
 
 		// le code postal
@@ -81,18 +86,21 @@ function verifFormulaireGererHeb()
 			if(cpNombre.length!=5 || (isNaN(cpNombre)))
 			{
 				creerUneAlerte('le code postal doit comporter 5 chiffres', cp);
+				envoyer=false;
 			}
 
 		// la ville
 			if(ville.value.length==0 || !(isNaN(ville.value)))
 			{
 				creerUneAlerte('Le nom de la ville est incorrect', ville);
+				envoyer=false;
 			}
 
 		// l'adresse mail
 			if(mail.value<8 || mail.value>50 || mail.value.length<4 || mail.value.indexOf('@', 0)==-1 || mail.value.indexOf('.', 0)==-1)
 			{
 				creerUneAlerte('L\'adresse mail n\'est pas correcte', mail);
+				envoyer=false;
 			}
 
 		// vérifier si il y a au moins une chambre de proposé
@@ -142,7 +150,6 @@ function creerUneAlerte(message, variable)
 
 	variable.parentNode.insertBefore(newAlert, variable.previousElementSibling);
 
-	envoyer=false;
 }
 
 // fonction qui permet de confirmer la demande de supression d'un hébergement et de vérifier si elle est posible
@@ -154,13 +161,13 @@ function confirmSupprHeb(id, nbChambre1PReserve, nbChambre2PReserve)
 
 	if(reservation>=1)
 	{
-		alert("L'hébergement ne peut pas être supprimer car des judes ont déjà réservé dans cet hébergement");
+		alert("L'hébergement ne peut pas être supprimer car des juges ont déjà réservé dans cet hébergement");
 
 	}
 	else
 	{
-		if(confirm("Voulez vous vraiment supprimer cet hébergement ? L'opération est iréversible"));
-		document.location.href='?uc=gererHebergementJuges&action=supprimerHebergement&id=' + id;
+		if(confirm("Voulez vous vraiment supprimer cet hébergement ? L'opération est iréversible"))
+			document.location.href='?uc=gererHebergementJuges&action=supprimerHebergement&id=' + id;
 	}
 }
 
