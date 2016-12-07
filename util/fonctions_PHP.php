@@ -12,6 +12,16 @@ function tel($str) {
     }
 }
 
+// affichage du Code Postal
+// auteur : Rémi Hillériteau
+function cp($str) {
+    if(strlen($str) == 5) {
+    $res = substr($str, 0, 2) .'&nbsp;';
+    $res .= substr($str, 2, 3) .'&nbsp;';
+    return $res;
+    }
+}
+
 // permet de créer des critères de recherche et de trie 
 // et de faire l'appel à la requête pour récupérer les hébergements
 // auteur : Rémi Hillériteau
@@ -58,6 +68,30 @@ function trieListeHebergement($champ)
 	$lien = " onclick='document.location.href=\"" . $adresse . "\";' ";
 
 	return $lien;
+}
+
+// permet de vérifier si une option doit être sélectionnée
+// auteur : Rémi Hillériteau
+function selected($valeurObtion, $valeurDonnee)
+{
+	if(isset($_REQUEST[$valeurDonnee]) AND $_REQUEST[$valeurDonnee]==$valeurObtion)
+		$selected=" selected='selected' ";
+	else
+		$selected='';
+
+	return $selected;
+}
+
+// permet de vérifier si un checkebox doit être sélectionnée
+// auteur : Rémi Hillériteau
+function checked($valeurChecked, $valeurDonnee)
+{
+	if(isset($valeurDonnee) AND $valeurDonnee==$valeurChecked)
+		$checked=" checked='checked' ";
+	else
+		$checked='';
+
+	return $checked;
 }
 
 ?>
